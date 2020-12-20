@@ -33,8 +33,10 @@ function venv-create() {
         . "${_VENV_ACTIVATE_HOME}/$1/bin/activate"
         printf "\n(%s) $ python -m pip install --upgrade pip setuptools wheel\n" "${1}"
         python -m pip install --upgrade --quiet pip setuptools wheel
+        python -m pip install --quiet ipykernel
+        python -m ipykernel install --name="${1}" --user
         deactivate
-        printf "\n# Created virtual environment %s\n" "${1}"
+        printf "\n# Created virtual environment & installed as jupyter kernel%s\n" "${1}"
         printf "\n# To activate it run:\n\nvenv-activate %s\n" "${1}"
         printf "\n# To exit the virtual environment run:\n\ndeactivate\n\n"
         return 0
@@ -90,6 +92,7 @@ function venv-remove() {
         printf "\nEnter an existing virtual environment name to remove:\n"
         display_venvs
     else
+        jupyter kernelspec uninstall "${1}"
         rm -rf "${_VENV_ACTIVATE_HOME:?}/${1}"
         printf "\n# Deleted virtual environment %s\n" "${1}"
         return 0

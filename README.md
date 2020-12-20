@@ -2,6 +2,7 @@
 
 Bash tab completion of creation and activation of Python virtual environments (installed under `$HOME/.venvs` by default)
 
+Modified from @matthewfeickert to also add the venv as a kernel for your global juypter instance :)
 ## Installation
 
 If `_venv-activate.sh` is installed at `/opt/_venv-activate/_venv-activate.sh` then if the following is added to a user's `~/.bashrc`

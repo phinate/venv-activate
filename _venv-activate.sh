@@ -36,7 +36,7 @@ function venv-create() {
         python -m pip install --quiet ipykernel
         python -m ipykernel install --name="${1}" --user
         deactivate
-        printf "\n# Created virtual environment & installed as jupyter kernel%s\n" "${1}"
+        printf "\n# Created virtual environment called %s & installed as jupyter kernel\n" "${1}"
         printf "\n# To activate it run:\n\nvenv-activate %s\n" "${1}"
         printf "\n# To exit the virtual environment run:\n\ndeactivate\n\n"
         return 0
